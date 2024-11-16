@@ -12,6 +12,7 @@ namespace MinivillesConsole
         public string Name { get; }
         public int Coins { get; private set; }
         public List<Card> Cards { get; }
+        public bool CanRollTwoDice { get; private set; }
 
         public Player(string name)
         {
@@ -22,11 +23,18 @@ namespace MinivillesConsole
                 new Card("Champs de blé", "Bleu", 1, "Recevez 1 pièce", 1),
             new Card("Boulangerie", "Vert", new[] { 2, 3 }, "Recevez 2 pièces", 1)
             };
+            CanRollTwoDice = false;
         }
 
         public void AddCard(Card card)
         {
             Cards.Add(card);
+
+
+            if (card.Name == "Gare")
+            {
+                CanRollTwoDice = true;
+            }
         }
 
         public void AddCoins(int amount)
@@ -59,6 +67,25 @@ namespace MinivillesConsole
                     }
                 }
             }
+        }
+
+        private void ApplyCardEffect(Player owner, Player opponent, Card card)
+        {
+            if (card.Name == "Café" || card.Name == "Restaurant")
+            {
+                int amount = card.Name == "Café" ? 1 : 2;
+                int transfer = Math.Min(opponent.Coins, amount);
+                opponent.SubtractCoins(transfer);
+                owner.AddCoins(transfer);
+                Console.WriteLine($"{owner.Name} active {card.Name} et prend {transfer} pièces à {opponent.Name}.");
+            }
+            else
+            {
+                int amount = int.Parse(card.Effect.Split(' ')[1]);
+                owner.AddCoins(amount);
+                Console.WriteLine($"{owner.Name} active {card.Name} et gagne {amount} pièces.");
+            }
+        }
 
         public override string ToString()
         {
@@ -66,5 +93,4 @@ namespace MinivillesConsole
             return $"Player 1: {Coins} pièces, Cartes: {cards}";
         }
     }
-
 }
