@@ -9,12 +9,12 @@ namespace MinivillesConsole
 {
     public class Player
     {
-        public string name { get; private set; }
-        public int coins { get; set; }
-        public bool canRollTwoDice { get; private set; }
-        public bool canReroll { get; set; }
-        public List<Cards> cardsOwned { get; private set; }
-        public List<int> Dices { get; private set; }
+        public string name;
+        public int coins;
+        public bool canRollTwoDice;
+        public bool canReroll;
+        public List<Cards> cardsOwned;
+        public List<int> Dices;
 
         public Player(string name)
         {
