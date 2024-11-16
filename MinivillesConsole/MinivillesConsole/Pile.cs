@@ -10,7 +10,7 @@ namespace MinivillesConsole
     {
 
         public Dictionary<string, List<Cards>> decksByColor;
-        public Pile() : base("", 0,0, "", "", 0, 0)
+        public Pile() : base("", 0, 0, "", "", 0, 0)
         {
             decksByColor = new Dictionary<string, List<Cards>>();
             initializeDeck();
@@ -36,7 +36,7 @@ namespace MinivillesConsole
                 new Cards("buisness center", 8, 0, "", "purple", 6, 0), //EXCEPTION : echange d'etablissement avec un joueur
                 new Cards("television", 7, 5, "etablissement", "purple", 6, 0),
                 new Cards("stadium", 6, 2, "etablissement", "purple", 6, 0),
-            };      
+            };
 
             // Regrouper les cartes par couleur
             foreach (Cards card in allCards)
@@ -47,7 +47,11 @@ namespace MinivillesConsole
                 }
                 decksByColor[card.color].Add(card);
             }
+
         }
+
+
+
 
     }
 }
