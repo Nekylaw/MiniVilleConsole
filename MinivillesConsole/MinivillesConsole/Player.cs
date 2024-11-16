@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MinivillesConsole
 {
-    public class Cards
+    internal class Player
     {
     }
 }
