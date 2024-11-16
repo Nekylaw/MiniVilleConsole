@@ -21,13 +21,14 @@ namespace MinivillesConsole
 
         private void PlayTurn()
         {
+            //faut faire action de IA encore
             Player activePlayer = players[currentPlayerIndex];
             Player otherPlayer = players[(currentPlayerIndex + 1) % players.Count];
 
-            Console.WriteLine($"C'est au tour de {activePlayer.playerName} ");
+            Console.WriteLine($"C'est au tour de {activePlayer.Name} ");
             int diceRoll = 0;
             int n = 1;
-            if (activePlayer.canRollTwoDice)
+            if (activePlayer.CanRollTwoDice)
             {
                 Console.Write("Voulez-vous lancer 1 ou 2 dés? (1/2)");
                 int n = int.Parse(Console.ReadLine());
@@ -39,17 +40,15 @@ namespace MinivillesConsole
                 diceRoll += dice.Throw();
             }
 
-            Console.WriteLine($"{activePlayer.playerName} a obtenu {diceRoll}");
+            Console.WriteLine($"{activePlayer.Name} a obtenu {diceRoll}");
 
-            otherPlayer.ActivateCards(otherPlayer, diceRoll, activePlayer);
+            otherPlayer.ActivateCards(activePlayer, diceRoll);
 
-            activePlayer.ActivateCards(diceRoll, activePlayer);
+            activePlayer.ActivateCards(otherPlayer, diceRoll);
 
-            activePlayer.BuyCard();
+            // acheter cartes
 
             currentPlayerIndex = (currentPlayerIndex + 1) % players.Count;
-
-            Thread.Sleep(1000);
         }
 
         private int RollDice()
