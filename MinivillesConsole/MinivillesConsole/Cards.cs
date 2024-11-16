@@ -26,20 +26,20 @@ namespace MinivillesConsole
 
         #region
         Cards weatField = new Cards("wheat field", 1, 1, "harvest", "blue", 1, 0);
-        Cards forest = new Cards("Foret", 2, 1, "Naturel", "blue", 5, 0);
-        Cards mine = new Cards("Mine", 6, 5, "Naturel", "blue", 9, 0);
-        Cards farm = new Cards("Ferme", 2, 1, "", "blue", 2, 0);
-        Cards verger = new Cards("Verger", 3, 3, "Recolte", "blue", 10, 0);
-        Cards bakery = new Cards("Boulangerie", 1, 2, "shop", "green", 2, 3);
-        Cards shop = new Cards("Superette", 2, 3, "shop", "green", 4, 0);
-        Cards cheeseFactory = new Cards("Fromagerie", 5, 3, "factory", "green", 7, 0);
+        Cards forest = new Cards("forest", 2, 1, "Naturel", "blue", 5, 0);
+        Cards mine = new Cards("mine", 6, 5, "Naturel", "blue", 9, 0);
+        Cards farm = new Cards("farm", 2, 1, "", "blue", 2, 0);
+        Cards verger = new Cards("verger", 3, 3, "Recolte", "blue", 10, 0);
+        Cards bakery = new Cards("bakery", 1, 2, "shop", "green", 2, 3);
+        Cards shop = new Cards("store", 2, 3, "shop", "green", 4, 0);
+        Cards cheeseFactory = new Cards("cheese factory", 5, 3, "factory", "green", 7, 0);
         Cards furnituresFactory = new Cards("Fabrique de meubles", 3, 3, "Usine", "green", 8, 0);
-        Cards market = new Cards("Marche de fruit et legumes", 5, 2, "Courses", "green", 11, 12);
-        Cards coffeeShop = new Cards("Cafe", 2, 1, "restauration", "red", 3, 0);
-        Cards restaurant = new Cards("Restaurant", 3, 2, "restauration", "green", 9, 10);
-        Cards buisnessCenter = new Cards("Centre d'affaires", 8, 0, "", "purple", 6, 0); //EXCEPTION : echange d'etablissement avec un joueur
-        Cards tvChannel = new Cards("Chaine de tele", 7, 5, "etablissement", "purple", 6, 0);
-        Cards stadium = new Cards("Stade", 6, 2, "etablissement", "purple", 6, 0);
+        Cards market = new Cards("market", 5, 2, "grocery", "green", 11, 12);
+        Cards coffeeShop = new Cards("coffee", 2, 1, "restauration", "red", 3, 0);
+        Cards restaurant = new Cards("restaurant", 3, 2, "restauration", "green", 9, 10);
+        Cards buisnessCenter = new Cards("buisness center", 8, 0, "", "purple", 6, 0); //EXCEPTION : echange d'etablissement avec un joueur
+        Cards tvChannel = new Cards("television", 7, 5, "etablissement", "purple", 6, 0);
+        Cards stadium = new Cards("stadium", 6, 2, "etablissement", "purple", 6, 0);
         #endregion
 
         Cards trainStation = new Cards("train station", 4, 0, "Monument", "special", 0, 0);
@@ -110,7 +110,7 @@ namespace MinivillesConsole
             {
                 if (monument.name == "train station")
                 {
-                    player.dices.Add(new Dice());
+                    Console.WriteLine($"{player} peut lancer 2 dés.");
                 }
                 if (monument.name == "radio tower")
                 {
