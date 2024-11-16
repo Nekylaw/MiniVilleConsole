@@ -8,5 +8,12 @@ namespace MinivillesConsole
 {
     internal class Dice
     {
+        public int face;
+        private Random random = new();
+
+        public void Throw()
+        {
+            face = random.Next(0,7);
+        }
     }
 }
