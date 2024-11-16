@@ -12,6 +12,7 @@ namespace MinivillesConsole
         private List<Player> players = new();
         private int currentPlayerIndex = 0;
         private Dice dice = new Dice();
+        private Random r = new Random();
 
         private void Run()
         {
@@ -30,11 +31,18 @@ namespace MinivillesConsole
             int n = 1;
             if (activePlayer.canRollTwoDice)
             {
-                Console.Write("Voulez-vous lancer 1 ou 2 dés? (1/2)");
-                n = int.Parse(Console.ReadLine());
+                if (activePlayer.isAI)
+                {
+                    n = r.Next(1,3);
+                }
+                else
+                {
+                    Console.Write("Voulez-vous lancer 1 ou 2 dés? (1/2)");
+                    n = int.Parse(Console.ReadLine());
+                    Console.Write("Appuyez sur n'importe quel touche pour lancer les dés.");
+                    Console.ReadLine();
+                }
             }
-            Console.Write("Appuyez sur n'importe quel touche pour lancer les dés.");
-            Console.ReadLine();
             for (int i = 0; i <= n; i++)
             {
                 diceRoll += dice.Throw();
