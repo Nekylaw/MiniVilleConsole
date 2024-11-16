@@ -9,42 +9,48 @@ namespace MinivillesConsole
 {
     public class Player
     {
-        public string Name { get; }
-        public int Coins { get; private set; }
-        public List<Card> Cards { get; }
-        public bool CanRollTwoDice { get; private set; }
+        public string name { get; }
+        public int coins { get; private set; }
+        public List<Cards> Cards { get; }
+        public bool canRollTwoDice { get; private set; }
+        public bool canReroll { get; private set; }
 
         public Player(string name)
         {
-            Name = name;
-            Coins = 3;
-            Cards = new List<Card>
+            this.name = name;
+            coins = 3;
+            Cards = new List<Cards>
             {
-                new Card("Champs de blé", "Bleu", 1, "Recevez 1 pièce", 1),
-            new Card("Boulangerie", "Vert", new[] { 2, 3 }, "Recevez 2 pièces", 1)
+                new Cards("Champs de blé", "Bleu", 1, "Recevez 1 pièce", 1),
+            new Cards("Boulangerie", "Vert", new[] { 2, 3 }, "Recevez 2 pièces", 1)
             };
-            CanRollTwoDice = false;
+            canRollTwoDice = false;
+            canReroll = false;
         }
 
-        public void AddCard(Card card)
+        public void AddCard(Cards card)
         {
             Cards.Add(card);
 
 
-            if (card.Name == "Gare")
+            if (card.name == "train station")
             {
-                CanRollTwoDice = true;
+                canRollTwoDice = true;
+            }
+            if (card.name == "radio tower")
+            {
+                canReroll = true;
             }
         }
 
         public void AddCoins(int amount)
         {
-            Coins += amount;
+            coins += amount;
         }
 
         public void SubtractCoins(int amount)
         {
-            Coins = Math.Max(0, Coins - amount);
+            coins = Math.Max(0, coins - amount);
         }
 
         public void ActivateCards(Player opponent, int diceSum)
@@ -57,7 +63,7 @@ namespace MinivillesConsole
                 }
             }
 
-            if (Name == "Joueur")
+            if (name == "Joueur")
             {
                 foreach (var card in opponent.Cards)
                 {
@@ -74,23 +80,23 @@ namespace MinivillesConsole
             if (card.Name == "Café" || card.Name == "Restaurant")
             {
                 int amount = card.Name == "Café" ? 1 : 2;
-                int transfer = Math.Min(opponent.Coins, amount);
+                int transfer = Math.Min(opponent.coins, amount);
                 opponent.SubtractCoins(transfer);
                 owner.AddCoins(transfer);
-                Console.WriteLine($"{owner.Name} active {card.Name} et prend {transfer} pièces à {opponent.Name}.");
+                Console.WriteLine($"{owner.name} active {card.Name} et prend {transfer} pièces à {opponent.name}.");
             }
             else
             {
                 int amount = int.Parse(card.Effect.Split(' ')[1]);
                 owner.AddCoins(amount);
-                Console.WriteLine($"{owner.Name} active {card.Name} et gagne {amount} pièces.");
+                Console.WriteLine($"{owner.name} active {card.Name} et gagne {amount} pièces.");
             }
         }
 
         public override string ToString()
         {
             string cards = string.Join(", ", Cards);
-            return $"Player 1: {Coins} pièces, Cartes: {cards}";
+            return $"Player 1: {coins} pièces, Cartes: {cards}";
         }
     }
 }
