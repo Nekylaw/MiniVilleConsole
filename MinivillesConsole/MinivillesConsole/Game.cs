@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -25,13 +25,13 @@ namespace MinivillesConsole
             Player activePlayer = players[currentPlayerIndex];
             Player otherPlayer = players[(currentPlayerIndex + 1) % players.Count];
 
-            Console.WriteLine($"C'est au tour de {activePlayer.Name} ");
+            Console.WriteLine($"C'est au tour de {activePlayer.name} ");
             int diceRoll = 0;
             int n = 1;
-            if (activePlayer.CanRollTwoDice)
+            if (activePlayer.canRollTwoDice)
             {
                 Console.Write("Voulez-vous lancer 1 ou 2 dés? (1/2)");
-                int n = int.Parse(Console.ReadLine());
+                n = int.Parse(Console.ReadLine());
             }
             Console.Write("Appuyez sur n'importe quel touche pour lancer les dés.");
             Console.ReadLine();
@@ -40,7 +40,7 @@ namespace MinivillesConsole
                 diceRoll += dice.Throw();
             }
 
-            Console.WriteLine($"{activePlayer.Name} a obtenu {diceRoll}");
+            Console.WriteLine($"{activePlayer.name} a obtenu {diceRoll}");
 
             otherPlayer.ActivateCards(activePlayer, diceRoll);
 
@@ -49,11 +49,6 @@ namespace MinivillesConsole
             // acheter cartes
 
             currentPlayerIndex = (currentPlayerIndex + 1) % players.Count;
-        }
-
-        private int RollDice()
-        {
-            return Random.Range(1, 7); // Simule un lancer de dé (1 à 6)
         }
     }
 }
