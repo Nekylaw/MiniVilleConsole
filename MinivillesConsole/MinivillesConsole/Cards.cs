@@ -72,32 +72,32 @@ namespace MinivillesConsole
             if (this.color == "Blue")
             {
 
-                playerSendingEffect.money += this.gainValue;
-                playerReceivingEffect.money += this.gainValue;
+                playerSendingEffect.coins += this.gainValue;
+                playerReceivingEffect.coins += this.gainValue;
 
             }
             if (this.color == "Red")
             {
-                playerSendingEffect.money += this.gainValue;
-                playerReceivingEffect.money -= this.gainValue;
+                playerSendingEffect.coins += this.gainValue;
+                playerReceivingEffect.coins -= this.gainValue;
 
             }
-            if (info.color == "Green")
+            if (this.color == "Green")
             {
                 if (this.name == "Store")
                 {
-                    playerSendingEffect.money += this.gainValue;
+                    playerSendingEffect.coins += this.gainValue;
                 }
                 if (this.name == "Market")
                 {
-                    playerSendingEffect.money += this.gainValue;
+                    playerSendingEffect.coins += this.gainValue;
                 }
             }
             if (this.color == "Purple")
             {
 
-                playerSendingEffect.money += this.gainValue;
-                playerReceivingEffect.money -= this.gainValue;
+                playerSendingEffect.coins += this.gainValue;
+                playerReceivingEffect.coins -= this.gainValue;
                 
             }
 
@@ -114,7 +114,7 @@ namespace MinivillesConsole
                 }
                 if (monument.name == "radio tower")
                 {
-                    player.reroll = true;
+                    player.canReroll = true;
                 }
                 if (monument.name == "mall")
                 {
@@ -131,7 +131,7 @@ namespace MinivillesConsole
                 {
                     if (player.dices[0].face == player.dices[1].face)
                     {
-                        player.reroll = true;
+                        player.c0anReroll = true;
                     }
                 }
 

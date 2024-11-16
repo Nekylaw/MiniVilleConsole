@@ -9,94 +9,60 @@ namespace MinivillesConsole
 {
     public class Player
     {
-        public string name { get; }
-        public int coins { get; private set; }
-        public List<Cards> Cards { get; }
+        public string name { get; private set; }
+        public int coins { get; set; }
         public bool canRollTwoDice { get; private set; }
-        public bool canReroll { get; private set; }
+        public bool canReroll { get; set; }
+        public List<Cards> cardsOwned { get; private set; }
+        public List<int> Dices { get; private set; }
 
         public Player(string name)
         {
             this.name = name;
             coins = 3;
-            Cards = new List<Cards>
-            {
-                new Cards("Champs de blé", "Bleu", 1, "Recevez 1 pièce", 1),
-            new Cards("Boulangerie", "Vert", new[] { 2, 3 }, "Recevez 2 pièces", 1)
-            };
             canRollTwoDice = false;
             canReroll = false;
+            cardsOwned = new List<Cards>();
+            Dices = new List<int> { 0, 0 };
         }
 
-        public void AddCard(Cards card)
+        public void BuyCard(Cards card)
         {
-            Cards.Add(card);
-
-
-            if (card.name == "train station")
+            if (coins >= card.cost && card.cardsLeftStore > 0)
             {
-                canRollTwoDice = true;
-            }
-            if (card.name == "radio tower")
-            {
-                canReroll = true;
-            }
-        }
+                coins -= card.cost;
+                cardsOwned.Add(card);
+                card.cardsLeftStore--;
 
-        public void AddCoins(int amount)
-        {
-            coins += amount;
-        }
-
-        public void SubtractCoins(int amount)
-        {
-            coins = Math.Max(0, coins - amount);
-        }
-
-        public void ActivateCards(Player opponent, int diceSum)
-        {
-            foreach (var card in Cards)
-            {
-                if (card.IsActivated(diceSum) && (card.Color == "Bleu" || card.Color == "Vert"))
+                if (card.name == "train station")
                 {
-                    ApplyCardEffect(this, opponent, card);
+                    canRollTwoDice = true;
                 }
-            }
 
-            if (name == "Joueur")
-            {
-                foreach (var card in opponent.Cards)
+                if (card.name == "radio tower")
                 {
-                    if (card.IsActivated(diceSum) && (card.Color == "Bleu" || card.Color == "Rouge"))
-                    {
-                        ApplyCardEffect(opponent, this, card);
-                    }
+                    canReroll = true;
                 }
             }
         }
 
-        private void ApplyCardEffect(Player owner, Player opponent, Card card)
+        public void ActivateCards(Player opponent, int diceValue)
         {
-            if (card.Name == "Café" || card.Name == "Restaurant")
+            foreach (var card in cardsOwned)
             {
-                int amount = card.Name == "Café" ? 1 : 2;
-                int transfer = Math.Min(opponent.coins, amount);
-                opponent.SubtractCoins(transfer);
-                owner.AddCoins(transfer);
-                Console.WriteLine($"{owner.name} active {card.Name} et prend {transfer} pièces à {opponent.name}.");
-            }
-            else
-            {
-                int amount = int.Parse(card.Effect.Split(' ')[1]);
-                owner.AddCoins(amount);
-                Console.WriteLine($"{owner.name} active {card.Name} et gagne {amount} pièces.");
+                if (card.diceValue1 == diceValue || card.diceValue2 == diceValue)
+                {
+                    card.Effect(this, opponent);
+                }
             }
         }
 
-        public override string ToString()
+        public void DisplayCards()
         {
-            string cards = string.Join(", ", Cards);
-            return $"Player 1: {coins} pièces, Cartes: {cards}";
+            foreach (var card in cardsOwned)
+            {
+                Console.WriteLine($"- {card.name} ({card.color}) : {card.gainValue} gain(s) [Activation : {card.diceValue1}, {card.diceValue2}]");
+            }
         }
     }
 }
