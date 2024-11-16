@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MyApp // Note: actual namespace depends on the project name.
+namespace MinivillesConsole
 {
     static class Program
     {
