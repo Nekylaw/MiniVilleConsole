@@ -74,8 +74,8 @@ namespace MinivillesConsole
             string choice;
             if (activePlayer.name == "AI")
             {
-                var cles = shop.decksByName.Keys;
-                choice = cles[r.Next(0, cles.Length-1)];
+                //prends une clé aléatoire
+                choice = shop.decksByName.ElementAt(r.Next(0, shop.decksByName.Count)).Key;
             }
             else
             {
@@ -87,8 +87,7 @@ namespace MinivillesConsole
             {
                 if (activePlayer.name == "AI")
                 {
-                    var cles = shop.decksByName.Keys;
-                    choice = cles[r.Next(0, cles.Length - 1)];
+                    choice = shop.decksByName.ElementAt(r.Next(0, shop.decksByName.Count)).Key;
                 }
                 else
                 {

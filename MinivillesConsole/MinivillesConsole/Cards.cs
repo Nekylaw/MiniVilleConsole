@@ -84,7 +84,6 @@ namespace MinivillesConsole
             {
 
                 playerSendingEffect.coins += this.gainValue;
-                playerReceivingEffect.coins += this.gainValue;
 
             }
             if (this.color == "Red")
@@ -103,6 +102,7 @@ namespace MinivillesConsole
                 {
                     playerSendingEffect.coins += this.gainValue;
                 }
+
             }
             if (this.color == "Purple")
             {

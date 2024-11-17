@@ -57,7 +57,8 @@ namespace MinivillesConsole
             {
                 if (card.diceValue1 == diceValue || card.diceValue2 == diceValue)
                 {
-                    card.Effect(this, opponent);
+                    if (card.color == "blue" || card.color == "green")
+                        card.Effect(this, opponent);
                 }
             }
         }
