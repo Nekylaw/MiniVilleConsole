@@ -94,13 +94,34 @@ namespace MinivillesConsole
             }
             if (this.color == "Green")
             {
-                if (this.name == "Store")
+                if (this.type == "shop")
                 {
                     playerSendingEffect.coins += this.gainValue;
                 }
-                if (this.name == "Market")
+                else
                 {
-                    playerSendingEffect.coins += this.gainValue;
+                    int gain = 0;
+                    string researched = "";
+                    switch (this.name)
+                    {
+                        case "cheese factory":
+                            researched = "breeding";
+                            break;
+                        case "furnitures factory":
+                            researched = "natural";
+                            break;
+                        case "market":
+                            researched = "harvest";
+                            break;
+                    }
+                    foreach (var card in playerSendingEffect.cardsOwned)
+                    {
+                        if (card.type == researched)
+                        {
+                            gain += this.gainValue;
+                        }
+                    }
+                    playerSendingEffect.coins += gain;
                 }
 
             }

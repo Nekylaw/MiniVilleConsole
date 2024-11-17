@@ -8,14 +8,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0eee5b10-69f6-49ec-92f8-952eddb6b214" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.MinivillesConsole/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.MinivillesConsole/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.MinivillesConsole/.idea/shelf/Uncommitted_changes_before_Checkout_at_17_11_2024_16_43_[Changes]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.MinivillesConsole/.idea/shelf/Uncommitted_changes_before_Checkout_at_17_11_2024_16_43__Changes_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.MinivillesConsole/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.MinivillesConsole/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.MinivillesConsole/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MinivillesConsole/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MinivillesConsole/Cards.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MinivillesConsole/Cards.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MinivillesConsole/Pile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MinivillesConsole/Pile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MinivillesConsole/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MinivillesConsole/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,12 +34,12 @@
     &quot;assignee&quot;: &quot;Xuatlox&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Nekylaw/MiniVilleConsole.git&quot;,
-    &quot;accountId&quot;: &quot;6a2d07b4-47f2-4ca7-8832-89be7c700f2a&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Nekylaw/MiniVilleConsole.git",
+    "accountId": "d87b0831-ee65-4d16-9c59-f46a11f4b5c2"
   }
-}</component>
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="mock://C:/Users/antoi/Documents/GitHub/MiniVilleConsole/MinivillesConsole/MinivillesConsole/Pile.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/antoi/Documents/GitHub/MiniVilleConsole/MinivillesConsole/MinivillesConsole/Pile.cs" root0="SKIP_HIGHLIGHTING" />
@@ -108,6 +103,8 @@
       <workItem from="1731860352081" duration="817000" />
       <workItem from="1731862546516" duration="305000" />
       <workItem from="1731863132063" duration="98000" />
+      <workItem from="1731863427269" duration="360000" />
+      <workItem from="1731878026557" duration="1866000" />
     </task>
     <servers />
   </component>
