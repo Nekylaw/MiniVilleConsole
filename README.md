@@ -27,20 +27,20 @@ Le but du jeu est d'être le premier à atteindre 20 pièces. Pour cela, vous de
 
 ## Instructions de Jeu
 
-Lancez le jeu en exécutant l'application.
-Deux joueurs (vous et un adversaire IA) participent à la partie.
-Lors de chaque tour, vous pouvez choisir de lancer un ou deux dés. Vous devez ensuite acheter des cartes disponibles.
-Vous gagnez des pièces en utilisant les cartes que vous avez achetées. Continuez à accumuler des pièces jusqu'à ce qu'un joueur atteigne les **20 pièces** nécessaires pour gagner.
+- Lancez le jeu en exécutant l'application.
+- Deux joueurs (vous et un adversaire IA) participent à la partie.
+- Lors de chaque tour, vous pouvez choisir de lancer un ou deux dés. Vous devez ensuite acheter des cartes disponibles.
+- Vous gagnez des pièces en utilisant les cartes que vous avez achetées. Continuez à accumuler des pièces jusqu'à ce qu'un joueur atteigne les **20 pièces** nécessaires pour gagner.
 
 ## Commandes
 
-**1** ou **2** : Choisissez si vous voulez lancer un seul dé ou deux dés.
-**Entrée** : Lancez les dés.
-**Acheter** : Écrivez les initiales montrées en face de la carte que vous voulez acheter
+- **1** ou **2** : Choisissez si vous voulez lancer un seul dé ou deux dés.
+- **Entrée** : Lancez les dés.
+- **Acheter** : Écrivez les initiales montrées en face de la carte que vous voulez acheter
 
 ## Notes
 
-**IA** : L'adversaire utilise une IA simple qui prend des décisions aléatoires. Elle simule le comportement d'un joueur, mais sans stratégie complexe.
-Le jeu se joue en **tour par tour**. Chaque joueur a l'opportunité d'agir à son tour.
+- **IA** : L'adversaire utilise une IA simple qui prend des décisions aléatoires. Elle simule le comportement d'un joueur, mais sans stratégie complexe.
+- Le jeu se joue en **tour par tour**. Chaque joueur a l'opportunité d'agir à son tour.
 
 
