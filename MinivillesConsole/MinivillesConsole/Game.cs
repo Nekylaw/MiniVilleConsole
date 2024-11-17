@@ -43,9 +43,12 @@ namespace MinivillesConsole
             Player otherPlayer = (currentPlayerIndex == 1) ? players[0] : players[1];
 
             Console.WriteLine($"C'est au tour de {activePlayer.name}. Il détient {activePlayer.coins} pièces  et ses cartes sont: ");
+            Thread.Sleep(1000);
             activePlayer.DisplayCards();
+            Thread.Sleep(1000);
             
             int diceRoll = 0;
+            Console.WriteLine("null dice roll = " + diceRoll);
             int n = 1;
             if (activePlayer.name == "AI")
             {
@@ -56,7 +59,7 @@ namespace MinivillesConsole
                 Console.Write("Voulez-vous lancer 1 ou 2 dés? (1/2)");
                 n = int.Parse(Console.ReadLine());
             }
-            for (int i = 0; i <= n; i++)
+            for (int i = 1; i <= n; i++)
             {
                 diceRoll += dice.Throw();
             }
@@ -75,6 +78,8 @@ namespace MinivillesConsole
             {
                 //prends une clé aléatoire
                 choice = shop.decksByName.ElementAt(r.Next(0, shop.decksByName.Count)).Key;
+                if (activePlayer.coins == 0)
+                    choice = "/";
             }
             else
             {
@@ -82,20 +87,25 @@ namespace MinivillesConsole
                 shop.displayCards();
                 choice = Console.ReadLine();
             }
-            while (!activePlayer.BuyCard(shop.decksByName[choice]))
+            if (choice != "/")
             {
-                if (activePlayer.name == "AI")
+                while (!activePlayer.BuyCard(shop.decksByName[choice]))
                 {
-                    choice = shop.decksByName.ElementAt(r.Next(0, shop.decksByName.Count)).Key;
-                }
-                else
-                {
-                    Console.WriteLine("vous pouvez acheter:");
-                    shop.displayCards();
-                    choice = Console.ReadLine();
+                    if (activePlayer.name == "AI")
+                    {
+                        choice = shop.decksByName.ElementAt(r.Next(0, shop.decksByName.Count)).Key;
+                        if (activePlayer.coins == 0)
+                            choice = "/";
+                    }
+                    else
+                    {
+                        shop.displayCards();
+                        choice = Console.ReadLine();
+                    }
+                    if (choice == "/") continue;
                 }
             }
-            Console.WriteLine($"{activePlayer.name} a acheté {shop.decksByName[choice].name}. Il reste {shop.decksByName[choice].cardsLeftStore}");
+            
             Thread.Sleep(500);
         }
     }

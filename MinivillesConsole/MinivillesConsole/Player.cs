@@ -37,7 +37,7 @@ namespace MinivillesConsole
                 card.cardsLeftStore--;
                 cardsOwned.Add(card);
 
-                Console.WriteLine($"{name} a acheté {card.name}.");
+                Console.WriteLine($"{name} a acheté {card.name}. Il en reste {card.cardsLeftStore}");
                 return true;
             }
             else
