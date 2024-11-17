@@ -13,25 +13,41 @@ namespace MinivillesConsole
         private int currentPlayerIndex = 0;
         private Dice dice = new Dice();
         private Random r = new Random();
+        //Cards shop = new Cards()
 
         private void Run()
         {
+            players.Add(new Player("Player"));
+            players.Add(new Player("AI"));
+
             Console.WriteLine("Début de la partie de Miniville !");
-            PlayTurn();
+            while (players[0].unlockedMonument.Count <4 && players[1].unlockedMonument.Count < 4)
+            {
+                PlayTurn();
+                currentPlayerIndex++;
+            }
+            foreach (var player in players)
+            {
+                if(player.unlockedMonument.Count == 4)
+                {
+                    Console.WriteLine($"Joueur {player.name} a gagné en construisant ses 4 monuments!");
+                }
+            }
         }
 
         private void PlayTurn()
         {
-            //faut faire action de IA encore
             Player activePlayer = players[currentPlayerIndex];
             Player otherPlayer = players[(currentPlayerIndex + 1) % players.Count];
 
-            Console.WriteLine($"C'est au tour de {activePlayer.name} ");
+            Console.WriteLine($"C'est au tour de {activePlayer.name}. Ses cartes sont: ");
+            activePlayer.DisplayCards();
             int diceRoll = 0;
             int n = 1;
+            //reste reroll a ajouter
             if (activePlayer.canRollTwoDice)
             {
-                if (activePlayer.isAI)
+                if (activePlayer.name == "AI")
                 {
                     n = r.Next(1,3);
                 }
@@ -54,7 +70,23 @@ namespace MinivillesConsole
 
             activePlayer.ActivateCards(otherPlayer, diceRoll);
 
-            // acheter cartes
+            Console.WriteLine("il est temps d'acheter une carte");
+            string choice;
+            if (activePlayer.name == "AI")
+            {
+                //carte aléatoire mais faut m'expliquer le shop
+                // choice = prends clé aléatoire dans dict du shop
+            }
+            else
+            {
+                Console.WriteLine("vous pouvez acheter:");
+                //Dans classe shop mettre display qui prends en paramètre le joueur
+                //choice = int.Parse(Console.WriteLine());
+
+                //BuyCard devrait être bool et return true ou false si transaction réussie et tant que transaction échouée, demander quelle carte on veut
+                
+            }
+            //activePlayer.BuyCard(/*dict shop*/)
 
             currentPlayerIndex = (currentPlayerIndex + 1) % players.Count;
         }
