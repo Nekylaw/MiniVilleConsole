@@ -25,6 +25,7 @@ namespace MinivillesConsole
 
             while (players[0].coins < 20 && players[1].coins < 20)
             {
+                Console.Clear();
                 PlayTurn(players[currentPlayerIndex]);
                 currentPlayerIndex = (currentPlayerIndex == 1) ? 0 : 1;
             }
@@ -48,7 +49,6 @@ namespace MinivillesConsole
             Thread.Sleep(1000);
             
             int diceRoll = 0;
-            Console.WriteLine("null dice roll = " + diceRoll);
             int n = 1;
             if (activePlayer.name == "AI")
             {
@@ -102,7 +102,7 @@ namespace MinivillesConsole
                         shop.displayCards();
                         choice = Console.ReadLine();
                     }
-                    if (choice == "/") continue;
+                    if (choice == "/") continue; // ça marche pas
                 }
             }
             

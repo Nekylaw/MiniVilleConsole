@@ -80,23 +80,32 @@ namespace MinivillesConsole
         public void Effect(Player playerSendingEffect, Player playerReceivingEffect)
         {
 
-            if (this.color == "Blue")
+            if (this.color == "blue")
             {
 
                 playerSendingEffect.coins += this.gainValue;
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"\n {playerSendingEffect.name} reçoit {this.gainValue} pièces de {this.name}");
+                Console.ForegroundColor = ConsoleColor.White;
 
             }
-            if (this.color == "Red")
+            if (this.color == "red")
             {
                 playerSendingEffect.coins += this.gainValue;
                 playerReceivingEffect.coins -= this.gainValue;
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"\n {playerSendingEffect.name} reçoit {this.gainValue} pièces de {playerReceivingEffect.name} par le biais de {this.name}");
+                Console.ForegroundColor = ConsoleColor.White;
 
             }
-            if (this.color == "Green")
+            if (this.color == "green")
             {
                 if (this.type == "shop")
                 {
                     playerSendingEffect.coins += this.gainValue;
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"\n {playerSendingEffect.name} reçoit {this.gainValue} pièces de {this.name}");
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
                 else
                 {
@@ -122,16 +131,19 @@ namespace MinivillesConsole
                         }
                     }
                     playerSendingEffect.coins += gain;
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"\n {playerSendingEffect.name} reçoit {gain} pièces de {this.name}");
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
 
             }
-            if (this.color == "Purple")
+            /*if (this.color == "Purple")
             {
                  
                 playerSendingEffect.coins += this.gainValue;
                 playerReceivingEffect.coins -= this.gainValue;
                 
-            }
+            }*/
 
         }
         //G�re les effets des monuments

@@ -43,10 +43,10 @@ namespace MinivillesConsole
                 new Cards("FF","furnitures factory", 3, 3, "factory", "green", 8, 0, 6),
                 new Cards("MA","market", 5, 2, "grocery", "green", 11, 12, 6),
                 new Cards("CO","coffee", 2, 1, "restaurant", "red", 3, 0, 6),
-                new Cards("RE","restaurant", 3, 2, "restaurant", "red", 9, 10, 6),
-                new Cards("BC","business center", 8, 0, "establishment", "purple", 6, 0, 6), //EXCEPTION : echange d'etablissement avec un joueur
+                new Cards("RE","restaurant", 3, 2, "restaurant", "red", 9, 10, 6)
+                /*new Cards("BC","business center", 8, 0, "establishment", "purple", 6, 0, 6), //EXCEPTION : echange d'etablissement avec un joueur
                 new Cards("TE","television", 7, 5, "establishment", "purple", 6, 0, 6),
-                new Cards("ST","stadium", 6, 2, "establishment", "purple", 6, 0,6),
+                new Cards("ST","stadium", 6, 2, "establishment", "purple", 6, 0,6),*/
             };
 
             // Regrouper les cartes par couleur
