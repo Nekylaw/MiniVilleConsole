@@ -15,7 +15,7 @@ namespace MinivillesConsole
         private Random r = new Random();
         //Cards shop = new Cards()
 
-        private void Run()
+        public void Run()
         {
             players.Add(new Player("Player"));
             players.Add(new Player("AI"));
