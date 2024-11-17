@@ -13,7 +13,7 @@ namespace MinivillesConsole
         private int currentPlayerIndex = 0;
         private Dice dice = new Dice();
         private Random r = new Random();
-        //Cards shop = new Cards()
+        Pile shop = new Pile();
 
         public void Run()
         {
@@ -21,16 +21,17 @@ namespace MinivillesConsole
             players.Add(new Player("AI"));
 
             Console.WriteLine("Début de la partie de Miniville !");
-            while (players[0].unlockedMonuments.Count <4 && players[1].unlockedMonuments.Count < 4)
+
+            while (players[0].coins < 20 && players[1].coins < 20)
             {
                 PlayTurn();
                 currentPlayerIndex++;
             }
             foreach (var player in players)
             {
-                if(player.unlockedMonuments.Count == 4)
+                if(player.coins >= 20)
                 {
-                    Console.WriteLine($"Joueur {player.name} a gagné en construisant ses 4 monuments!");
+                    Console.WriteLine($"Joueur {player.name} a gagné en atteignant 20 pièces!");
                 }
             }
         }
@@ -44,7 +45,6 @@ namespace MinivillesConsole
             activePlayer.DisplayCards();
             int diceRoll = 0;
             int n = 1;
-            //reste reroll a ajouter
             if (activePlayer.canRollTwoDice)
             {
                 if (activePlayer.name == "AI")
@@ -74,17 +74,28 @@ namespace MinivillesConsole
             string choice;
             if (activePlayer.name == "AI")
             {
-                //carte aléatoire mais faut m'expliquer le shop
-                // choice = prends clé aléatoire dans dict du shop
+                var cles = shop.decksByName.Keys;
+                choice = cles[r.Next(0, cles.Length-1)];
             }
             else
             {
                 Console.WriteLine("vous pouvez acheter:");
-                //Dans classe shop mettre display qui prends en paramètre le joueur
-                //choice = int.Parse(Console.WriteLine());
-
-                //BuyCard devrait être bool et return true ou false si transaction réussie et tant que transaction échouée, demander quelle carte on veut
-                
+                shop.DisplayCards();
+                choice = Console.ReadLine();
+            }
+            while (!activePlayer.BuyCard(decksByName[choice]))
+            {
+                if (activePlayer.name == "AI")
+                {
+                    var cles = shop.decksByName.Keys;
+                    choice = cles[r.Next(0, cles.Length - 1)];
+                }
+                else
+                {
+                    Console.WriteLine("vous pouvez acheter:");
+                    shop.DisplayCards();
+                    choice = Console.ReadLine();
+                }
             }
             //activePlayer.BuyCard(/*dict shop*/)
 
