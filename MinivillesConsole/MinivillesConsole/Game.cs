@@ -42,9 +42,9 @@ namespace MinivillesConsole
             Player activePlayer = ActivePlayer;
             Player otherPlayer = (currentPlayerIndex == 1) ? players[0] : players[1];
 
-            Console.WriteLine($"C'est au tour de {activePlayer.name}. Il détient {activePlayer.coins} et ses cartes sont: ");
+            Console.WriteLine($"C'est au tour de {activePlayer.name}. Il détient {activePlayer.coins} pièces  et ses cartes sont: ");
             activePlayer.DisplayCards();
-            activePlayer.DisplayCards();
+            
             int diceRoll = 0;
             int n = 1;
             if (activePlayer.name == "AI")
