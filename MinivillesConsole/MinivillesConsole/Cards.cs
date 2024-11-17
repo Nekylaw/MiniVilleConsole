@@ -44,10 +44,10 @@ namespace MinivillesConsole
         Cards stadium = new Cards("stadium", 6, 2, "etablissement", "purple", 6, 0, 6);
         #endregion
 
-        Cards trainStation = new Cards("train station", 4, 0, "Monument", "special", 0, 0, 0);
-        Cards parc = new Cards("park", 16, 0, "Monument", "special", 0, 0, 0);
-        Cards mall = new Cards("mall", 10, 1, "Monument", "special", 0, 0, 0);
-        Cards radio = new Cards("radio tower", 22, 0, "Monument", "special", 0, 0, 0);
+        //Cards trainStation = new Cards("train station", 4, 0, "Monument", "special", 0, 0, 0);
+        //Cards parc = new Cards("park", 16, 0, "Monument", "special", 0, 0, 0);
+        //Cards mall = new Cards("mall", 10, 1, "Monument", "special", 0, 0, 0);
+        //Cards radio = new Cards("radio tower", 22, 0, "Monument", "special", 0, 0, 0);
 
         public Cards(string Name, int Cost, int GainValue, string Type, string Color, int DiceValue1, int DiceValue2, int CardsLeftStore)
         {
@@ -112,41 +112,41 @@ namespace MinivillesConsole
 
         }
         //G�re les effets des monuments
-        public void monumentEffect(Player player)
-        {
+        //public void monumentEffect(Player player)
+        //{
 
-            foreach (var monument in player.unlockedMonuments)
-            {
-                if (monument.name == "train station")
-                {
-                    Console.WriteLine($"{player} peut lancer 2 dés.");
-                }
-                if (monument.name == "radio tower")
-                {
-                    player.canReroll = true;
-                }
-                if (monument.name == "mall")
-                {
-                    foreach (var card in player.cardsOwned)
-                    {
-                        if (card.type == "restauration" || card.type == "shop")
-                        {
-                            card.gainValue += 1;
-                        }
-                    }
+        //    foreach (var monument in player.unlockedMonuments)
+        //    {
+        //        if (monument.name == "train station")
+        //        {
+        //            Console.WriteLine($"{player} peut lancer 2 dés.");
+        //        }
+        //        if (monument.name == "radio tower")
+        //        {
+        //            player.canReroll = true;
+        //        }
+        //        if (monument.name == "mall")
+        //        {
+        //            foreach (var card in player.cardsOwned)
+        //            {
+        //                if (card.type == "restauration" || card.type == "shop")
+        //                {
+        //                    card.gainValue += 1;
+        //                }
+        //            }
 
-                }
-                if (monument.name == "park")
-                {
-                    /*if (player.dices[0].face == player.dices[1].face) //faire le truc pour le doublon de dés 
-                    {
-                        player.canReroll = true;
-                    }*/
-                }
+        //        }
+        //        if (monument.name == "park")
+        //        {
+        //            /*if (player.dices[0].face == player.dices[1].face) //faire le truc pour le doublon de dés 
+        //            {
+        //                player.canReroll = true;
+        //            }*/
+        //        }
 
-            }
+        //    }
 
-        }
+        //}
 
 
 
