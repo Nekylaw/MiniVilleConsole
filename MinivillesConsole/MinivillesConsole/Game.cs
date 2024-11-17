@@ -21,6 +21,7 @@ namespace MinivillesConsole
             players.Add(new Player("AI"));
 
             Console.WriteLine("Début de la partie de Miniville !");
+            Thread.Sleep(1000);
 
             while (players[0].coins < 20 && players[1].coins < 20)
             {
@@ -38,26 +39,24 @@ namespace MinivillesConsole
 
         private void PlayTurn()
         {
-            Player activePlayer = players[currentPlayerIndex];
+            Player activePlayer = players[currentPlayerIndex % players.Count];
             Player otherPlayer = players[(currentPlayerIndex + 1) % players.Count];
 
-            Console.WriteLine($"C'est au tour de {activePlayer.name}. Ses cartes sont: ");
+            Console.WriteLine($"C'est au tour de {activePlayer.name}. Il détient {activePlayer.coins} pièces. Ses cartes sont: ");
+            Thread.Sleep(500);
             activePlayer.DisplayCards();
             int diceRoll = 0;
             int n = 1;
-            if (activePlayer.canRollTwoDice)
+            if (activePlayer.name == "AI")
             {
-                if (activePlayer.name == "AI")
-                {
-                    n = r.Next(1,3);
-                }
-                else
-                {
-                    Console.Write("Voulez-vous lancer 1 ou 2 dés? (1/2)");
-                    n = int.Parse(Console.ReadLine());
-                    Console.Write("Appuyez sur n'importe quel touche pour lancer les dés.");
-                    Console.ReadLine();
-                }
+                n = r.Next(1,3);
+            }
+            else
+            {
+                Console.Write("Voulez-vous lancer 1 ou 2 dés? (1/2)");
+                n = int.Parse(Console.ReadLine());
+                Console.Write("Appuyez sur n'importe quel touche pour lancer les dés.");
+                Console.ReadLine();
             }
             for (int i = 0; i <= n; i++)
             {
@@ -65,12 +64,14 @@ namespace MinivillesConsole
             }
 
             Console.WriteLine($"{activePlayer.name} a obtenu {diceRoll}");
+            Thread.Sleep(500);
 
             otherPlayer.ActivateCards(activePlayer, diceRoll);
 
             activePlayer.ActivateCards(otherPlayer, diceRoll);
 
             Console.WriteLine("il est temps d'acheter une carte");
+            Thread.Sleep(100);
             string choice;
             if (activePlayer.name == "AI")
             {
@@ -79,8 +80,8 @@ namespace MinivillesConsole
             }
             else
             {
-                Console.WriteLine("vous pouvez acheter:");
-                shop.DisplayCards();
+                Console.WriteLine($"vous avez {activePlayer.coins} pièces et pouvez acheter:");
+                shop.displayCards();
                 choice = Console.ReadLine();
             }
             while (!activePlayer.BuyCard(shop.decksByName[choice]))
@@ -92,11 +93,12 @@ namespace MinivillesConsole
                 else
                 {
                     Console.WriteLine("vous pouvez acheter:");
-                    shop.DisplayCards();
+                    shop.displayCards();
                     choice = Console.ReadLine();
                 }
             }
-            Console.WriteLine($"{activePlayer.name} a acheté {shop.decksByName[choice]}. Il reste {shop.decksByName[choice].cardsLeftStore}");
+            Console.WriteLine($"{activePlayer.name} a acheté {shop.decksByName[choice].name}. Il reste {shop.decksByName[choice].cardsLeftStore}");
+            Thread.Sleep(500);
 
             currentPlayerIndex = (currentPlayerIndex + 1) % players.Count;
         }
