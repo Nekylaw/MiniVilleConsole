@@ -8,8 +8,10 @@ using System.Xml.Linq;
 
 namespace MinivillesConsole
 {
+    
     public class Player
-    {
+    {   
+        public List<Cards> unlockedMonuments = new List<Cards>();
         public string name;
         public int coins;
         public bool canRollTwoDice;

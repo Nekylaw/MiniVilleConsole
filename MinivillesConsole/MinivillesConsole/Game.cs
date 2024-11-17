@@ -15,20 +15,20 @@ namespace MinivillesConsole
         private Random r = new Random();
         //Cards shop = new Cards()
 
-        private void Run()
+        public void Run()
         {
             players.Add(new Player("Player"));
             players.Add(new Player("AI"));
 
             Console.WriteLine("Début de la partie de Miniville !");
-            while (players[0].unlockedMonument.Count <4 && players[1].unlockedMonument.Count < 4)
+            while (players[0].unlockedMonuments.Count <4 && players[1].unlockedMonuments.Count < 4)
             {
                 PlayTurn();
                 currentPlayerIndex++;
             }
             foreach (var player in players)
             {
-                if(player.unlockedMonument.Count == 4)
+                if(player.unlockedMonuments.Count == 4)
                 {
                     Console.WriteLine($"Joueur {player.name} a gagné en construisant ses 4 monuments!");
                 }
