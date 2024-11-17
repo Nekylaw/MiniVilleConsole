@@ -11,7 +11,7 @@ namespace MinivillesConsole
     
     public class Player
     {   
-        public List<Cards> unlockedMonuments = new List<Cards>();
+        //public List<Cards> unlockedMonuments = new List<Cards>();
         public string name;
         public int coins;
         public bool canRollTwoDice;
@@ -23,8 +23,8 @@ namespace MinivillesConsole
         {
             this.name = name;
             coins = 3;
-            canRollTwoDice = false;
-            canReroll = false;
+            //canRollTwoDice = false;
+            //canReroll = false;
             cardsOwned = new List<Cards>();
             Dices = new List<int> { 0, 0 };
         }
@@ -35,16 +35,7 @@ namespace MinivillesConsole
             {
                 coins -= card.cost;
                 card.cardsLeftStore--;
-
-                if (card.type == "Monument")
-                {
-                    unlockedMonuments.Add(card);
-                    applyMonumentEffect(card); 
-                }
-                else
-                {
-                    cardsOwned.Add(card);
-                }
+                cardsOwned.Add(card);
 
                 Console.WriteLine($"{name} a acheté {card.name}.");
                 return true;
