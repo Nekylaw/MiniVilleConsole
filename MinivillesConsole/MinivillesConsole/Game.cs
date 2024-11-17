@@ -15,20 +15,26 @@ namespace MinivillesConsole
         private Random r = new Random();
         Pile shop = new Pile();
 
+        /// <summary>
+        /// start a game
+        /// </summary>
         public void Run()
         {
+            //initialize all players
             players.Add(new Player("Player"));
             players.Add(new Player("AI"));
 
             Console.WriteLine("Début de la partie de Miniville !");
             Thread.Sleep(1000);
 
+            //game loop
             while (players[0].coins < 20 && players[1].coins < 20)
             {
                 Console.Clear();
                 PlayTurn(players[currentPlayerIndex]);
                 currentPlayerIndex = (currentPlayerIndex == 1) ? 0 : 1;
             }
+            //display the end of the game
             foreach (var player in players)
             {
                 if(player.coins >= 20)
@@ -38,6 +44,10 @@ namespace MinivillesConsole
             }
         }
 
+        /// <summary>
+        /// start and play a round for a player
+        /// </summary>
+        /// <param name="ActivePlayer"> the player who rolls the dice </param>
         private void PlayTurn(Player ActivePlayer)
         {
             Player activePlayer = ActivePlayer;
