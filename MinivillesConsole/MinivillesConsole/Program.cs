@@ -8,4 +8,5 @@ namespace MinivillesConsole
         {
             Game game = new Game();
         }
+    }
 }
