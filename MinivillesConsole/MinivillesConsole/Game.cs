@@ -83,7 +83,7 @@ namespace MinivillesConsole
                 shop.DisplayCards();
                 choice = Console.ReadLine();
             }
-            while (!activePlayer.BuyCard(decksByName[choice]))
+            while (!activePlayer.BuyCard(shop.decksByName[choice]))
             {
                 if (activePlayer.name == "AI")
                 {
@@ -97,7 +97,7 @@ namespace MinivillesConsole
                     choice = Console.ReadLine();
                 }
             }
-            //activePlayer.BuyCard(/*dict shop*/)
+            Console.WriteLine($"{activePlayer.name} a acheté {shop.decksByName[choice]}. Il reste {shop.decksByName[choice].cardsLeftStore}");
 
             currentPlayerIndex = (currentPlayerIndex + 1) % players.Count;
         }
