@@ -67,7 +67,9 @@ namespace MinivillesConsole
         {
             foreach (var card in cardsOwned)
             {
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine($"- {card.name} ({card.color}) : {card.gainValue} gain(s) [Activation : {card.diceValue1}, {card.diceValue2}]");
+                Console.ForegroundColor = ConsoleColor.White;
             }
         }
     }

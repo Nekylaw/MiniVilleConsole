@@ -106,7 +106,8 @@ namespace MinivillesConsole
                 }
             }
             
-            Thread.Sleep(500);
+            if (activePlayer.name == "AI")
+                Thread.Sleep(7000);
         }
     }
 }
