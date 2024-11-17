@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,23 +27,34 @@ namespace MinivillesConsole
             Dices = new List<int> { 0, 0 };
         }
 
-        public void BuyCard(Cards card)
+        public bool BuyCard(Cards card)
         {
             if (coins >= card.cost && card.cardsLeftStore > 0)
             {
                 coins -= card.cost;
-                cardsOwned.Add(card);
                 card.cardsLeftStore--;
 
-                if (card.name == "train station")
+                if (card.type == "Monument")
                 {
-                    canRollTwoDice = true;
+                    unlockedMonuments.Add(card);
+                    applyMonumentEffect(card); 
+                }
+                else
+                {
+                    cardsOwned.Add(card);
                 }
 
-                if (card.name == "radio tower")
-                {
-                    canReroll = true;
-                }
+                Console.WriteLine($"{name} a acheté {card.name}.");
+                return true;
+            }
+            else
+            {
+                if (coins < card.Cost)
+                    Console.WriteLine($"{name} n'a pas assez de pièces pour acheter {card.name}.");
+                else if (card.cardsLeftStore <= 0)
+                    Console.WriteLine($"{card.name} est en rupture de stock.");
+
+                return false;
             }
         }
 
