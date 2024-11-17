@@ -21,7 +21,7 @@ namespace MinivillesConsole
         public int anyRound;
         public int diceValue1;
         public int diceValue2;
-        public int cardsLeftStore = 6;$
+        public int cardsLeftStore = 6;
         public string id;
 
 
