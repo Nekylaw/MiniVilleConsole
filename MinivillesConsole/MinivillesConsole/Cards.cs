@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace MinivillesConsole
 {
@@ -47,9 +49,16 @@ namespace MinivillesConsole
         Cards mall = new Cards("mall", 10, 1, "Monument", "special", 0, 0, 0);
         Cards radio = new Cards("radio tower", 22, 0, "Monument", "special", 0, 0, 0);
 
-        public Cards(string name, int cost, int gainValue, string type, string color, int diceValue1, int diceValue2, int cardsLeftStore)
+        public Cards(string Name, int Cost, int GainValue, string Type, string Color, int DiceValue1, int DiceValue2, int CardsLeftStore)
         {
-
+            name = Name;
+            cost = Cost;
+            gainValue = GainValue;
+            type = Type;
+            color = Color;
+            diceValue1 = DiceValue1;
+            diceValue2 = DiceValue2;
+            cardsLeftStore = CardsLeftStore;
 
         }
 
