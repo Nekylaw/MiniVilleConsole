@@ -9,10 +9,10 @@ namespace MinivillesConsole
     public class Pile : Cards
     {
 
-        public Dictionary<string, List<Cards>> decksByName;
+        public Dictionary<string, Cards> decksByName;
         public Pile() : base("","", 0, 0, "", "", 0, 0, 6)
         {
-            decksByName = new Dictionary<string, List<Cards>>();
+            decksByName = new Dictionary<string, Cards>();
             initializeDeck();
         }
 
@@ -51,9 +51,9 @@ namespace MinivillesConsole
             {
                 if (!decksByName.ContainsKey(card.id))
                 {
-                    decksByName[card.id] = new List<Cards>();
+                    decksByName[card.id] = card;
                 }
-                decksByName[card.id].Add(card);
+               
             }
 
         }
