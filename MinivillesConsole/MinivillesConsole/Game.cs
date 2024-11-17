@@ -25,8 +25,8 @@ namespace MinivillesConsole
 
             while (players[0].coins < 20 && players[1].coins < 20)
             {
-                PlayTurn();
-                currentPlayerIndex++;
+                PlayTurn(players[currentPlayerIndex]);
+                currentPlayerIndex = (currentPlayerIndex == 1) ? 0 : 1;
             }
             foreach (var player in players)
             {
@@ -37,13 +37,13 @@ namespace MinivillesConsole
             }
         }
 
-        private void PlayTurn()
+        private void PlayTurn(Player ActivePlayer)
         {
-            Player activePlayer = players[currentPlayerIndex % players.Count];
-            Player otherPlayer = players[(currentPlayerIndex + 1) % players.Count];
+            Player activePlayer = ActivePlayer;
+            Player otherPlayer = (currentPlayerIndex == 1) ? players[0] : players[1];
 
-            Console.WriteLine($"C'est au tour de {activePlayer.name}. Il détient {activePlayer.coins} pièces. Ses cartes sont: ");
-            Thread.Sleep(500);
+            Console.WriteLine($"C'est au tour de {activePlayer.name}. Il détient {activePlayer.coins} et ses cartes sont: ");
+            activePlayer.DisplayCards();
             activePlayer.DisplayCards();
             int diceRoll = 0;
             int n = 1;
@@ -55,8 +55,6 @@ namespace MinivillesConsole
             {
                 Console.Write("Voulez-vous lancer 1 ou 2 dés? (1/2)");
                 n = int.Parse(Console.ReadLine());
-                Console.Write("Appuyez sur n'importe quel touche pour lancer les dés.");
-                Console.ReadLine();
             }
             for (int i = 0; i <= n; i++)
             {
@@ -99,8 +97,6 @@ namespace MinivillesConsole
             }
             Console.WriteLine($"{activePlayer.name} a acheté {shop.decksByName[choice].name}. Il reste {shop.decksByName[choice].cardsLeftStore}");
             Thread.Sleep(500);
-
-            currentPlayerIndex = (currentPlayerIndex + 1) % players.Count;
         }
     }
 }

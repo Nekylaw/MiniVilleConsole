@@ -25,8 +25,8 @@ namespace MinivillesConsole
             coins = 3;
             //canRollTwoDice = false;
             //canReroll = false;
-            cardsOwned = new List<Cards>();
-            Dices = new List<int> { 0, 0 };
+            cardsOwned = new List<Cards> { new Cards("WF", "wheat field", 1, 1, "harvest", "blue", 1, 0, 6),
+                                           new Cards("BA", "bakery", 1, 2, "shop", "green", 2, 3, 6)        };
         }
 
         public bool BuyCard(Cards card)

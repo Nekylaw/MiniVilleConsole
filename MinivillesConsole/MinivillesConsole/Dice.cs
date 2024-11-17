@@ -13,7 +13,7 @@ namespace MinivillesConsole
 
         public int Throw()
         {
-            return face = random.Next(0,7);
+            return face = random.Next(1,7);
         }
     }
 }
