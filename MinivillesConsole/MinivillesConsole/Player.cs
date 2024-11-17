@@ -42,7 +42,7 @@ namespace MinivillesConsole
             }
             else
             {
-                if (coins < card.Cost)
+                if (coins < card.cost)
                     Console.WriteLine($"{name} n'a pas assez de pièces pour acheter {card.name}.");
                 else if (card.cardsLeftStore <= 0)
                     Console.WriteLine($"{card.name} est en rupture de stock.");
