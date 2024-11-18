@@ -70,7 +70,11 @@ namespace MinivillesConsole
             else
             {
                 Console.Write("Voulez-vous lancer 1 ou 2 dés? (1/2)");
-                n = int.Parse(Console.ReadLine());
+                while(!int.TryParse(Console.ReadLine(), out n) || n<1 ||n>2)
+                {
+                    Console.WriteLine("saisie invalide. Veuillez réessayer.");
+                }
+
             }
 
             //dices being rolled
