@@ -113,13 +113,13 @@ namespace MinivillesConsole
                     string researched = "";
                     switch (this.name)
                     {
-                        case "cheese factory":
+                        case "usine a fromage":
                             researched = "breeding";
                             break;
-                        case "furnitures factory":
+                        case "usine a meubles":
                             researched = "natural";
                             break;
-                        case "market":
+                        case "marche":
                             researched = "harvest";
                             break;
                     }

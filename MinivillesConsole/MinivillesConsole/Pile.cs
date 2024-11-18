@@ -20,29 +20,31 @@ namespace MinivillesConsole
 
         public void displayCards()
         {
-            Console.WriteLine("Buy a card from the shop using one of the following commands of your choice:");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("Achetez une carte en saisissant la commande associée:");
             foreach (var cardType in decksByName.Keys)
             {
-                Console.WriteLine($"-'{cardType}': Buy a {decksByName[cardType].name} for {decksByName[cardType].cost} coins ({decksByName[cardType].cardsLeftStore} left)");
+                Console.WriteLine($"-'{cardType}': Achète un.e {decksByName[cardType].name} pour {decksByName[cardType].cost} pièces ({decksByName[cardType].cardsLeftStore} restants)");
             }
-            Console.WriteLine("-'/': Skip the buying phase");
+            Console.WriteLine("-'/': Passer la phase d'achat");
+            Console.ForegroundColor= ConsoleColor.White;
         }
 
         public void initializeDeck()
         {
             List<Cards> allCards = new List<Cards>
             {
-                new Cards("WF","wheat field", 1, 1, "harvest", "blue", 1, 0, 6),
-                new Cards("FO","forest", 3, 1, "natural", "blue", 5, 0, 6),
+                new Cards("WF","champs de ble", 1, 1, "harvest", "blue", 1, 0, 6),
+                new Cards("FO","foret", 3, 1, "natural", "blue", 5, 0, 6),
                 new Cards("MI","mine", 6, 5, "natural", "blue", 9, 0, 6),
-                new Cards("FA","farm", 2, 1, "breeding", "blue", 2, 0, 6),
+                new Cards("FA","ferme", 2, 1, "breeding", "blue", 2, 0, 6),
                 new Cards("VE","verger", 3, 3, "harvest", "blue", 10, 0, 6),
-                new Cards("BA","bakery", 1, 2, "shop", "green", 2, 3, 6),
-                new Cards("ST","store", 2, 3, "shop", "green", 4, 0, 6),
-                new Cards("CH","cheese factory", 5, 3, "factory", "green", 7, 0, 6),
-                new Cards("FF","furnitures factory", 3, 3, "factory", "green", 8, 0, 6),
-                new Cards("MA","market", 5, 2, "grocery", "green", 11, 12, 6),
-                new Cards("CO","coffee", 2, 1, "restaurant", "red", 3, 0, 6),
+                new Cards("BA","boulangerie", 1, 2, "shop", "green", 2, 3, 6),
+                new Cards("ST","superette", 2, 3, "shop", "green", 4, 0, 6),
+                new Cards("CH","usine a fromage", 5, 3, "factory", "green", 7, 0, 6),
+                new Cards("FF","usine a meubles", 3, 3, "factory", "green", 8, 0, 6),
+                new Cards("MA","marche", 5, 2, "grocery", "green", 11, 12, 6),
+                new Cards("CO","cafe", 2, 1, "restaurant", "red", 3, 0, 6),
                 new Cards("RE","restaurant", 3, 2, "restaurant", "red", 9, 10, 6)
                 /*new Cards("BC","business center", 8, 0, "establishment", "purple", 6, 0, 6), //EXCEPTION : echange d'etablissement avec un joueur
                 new Cards("TE","television", 7, 5, "establishment", "purple", 6, 0, 6),
