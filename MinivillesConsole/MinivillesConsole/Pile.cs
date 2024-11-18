@@ -20,12 +20,14 @@ namespace MinivillesConsole
 
         public void displayCards()
         {
+            Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("Achetez une carte en saisissant la commande associée:");
             foreach (var cardType in decksByName.Keys)
             {
                 Console.WriteLine($"-'{cardType}': Achète un.e {decksByName[cardType].name} pour {decksByName[cardType].cost} pièces ({decksByName[cardType].cardsLeftStore} restants)");
             }
             Console.WriteLine("-'/': Passer la phase d'achat");
+            Console.ForegroundColor= ConsoleColor.White;
         }
 
         public void initializeDeck()
