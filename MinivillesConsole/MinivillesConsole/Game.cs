@@ -102,7 +102,6 @@ namespace MinivillesConsole
                     choice = purchaseChoice(activePlayer);
                     if (choice == "/")
                     {
-                        Console.Write("FFFFFFFFFFFFFF");
                         break;
                     }
                 }
