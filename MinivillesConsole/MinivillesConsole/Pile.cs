@@ -39,7 +39,7 @@ namespace MinivillesConsole
                 new Cards("MI","mine", 6, 5, "natural", "blue", 9, 0, 6),
                 new Cards("FA","ferme", 2, 1, "breeding", "blue", 2, 0, 6),
                 new Cards("VE","verger", 3, 3, "harvest", "blue", 10, 0, 6),
-                new Cards("BA","boulangerie", 1, 2, "shop", "green", 2, 3, 6),
+                new Cards("BA","boulangerie", 1, 1, "shop", "green", 2, 3, 6),
                 new Cards("ST","superette", 2, 3, "shop", "green", 4, 0, 6),
                 new Cards("CH","usine a fromage", 5, 3, "factory", "green", 7, 0, 6),
                 new Cards("FF","usine a meubles", 3, 3, "factory", "green", 8, 0, 6),
