@@ -9,11 +9,8 @@
   <component name="ChangeListManager">
     <list default="true" id="0eee5b10-69f6-49ec-92f8-952eddb6b214" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MinivillesConsole/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MinivillesConsole/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MinivillesConsole/Cards.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MinivillesConsole/Cards.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MinivillesConsole/Dice.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MinivillesConsole/Dice.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MinivillesConsole/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MinivillesConsole/Game.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MinivillesConsole/Pile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MinivillesConsole/Pile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MinivillesConsole/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MinivillesConsole/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MinivillesConsole/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MinivillesConsole/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +73,7 @@
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/MinivillesConsole/bin/Debug/net8.0" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_EXTERNAL_CONSOLE" value="1" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
       <option name="PROJECT_PATH" value="$PROJECT_DIR$/MinivillesConsole/MinivillesConsole.csproj" />
@@ -111,7 +108,8 @@
       <workItem from="1731905794048" duration="1383000" />
       <workItem from="1731908760203" duration="766000" />
       <workItem from="1731909669128" duration="1457000" />
-      <workItem from="1731911478180" duration="1619000" />
+      <workItem from="1731911478180" duration="2040000" />
+      <workItem from="1731914042029" duration="645000" />
     </task>
     <servers />
   </component>
