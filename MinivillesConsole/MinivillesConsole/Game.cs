@@ -91,47 +91,37 @@ namespace MinivillesConsole
 
             Console.WriteLine("il est temps d'acheter une carte");
             Thread.Sleep(100);
-            string choice;
-            // purchase cards
-            if (activePlayer.name == "AI")
-            {
-                //prends une clé aléatoire
-                choice = shop.decksByName.ElementAt(r.Next(0, shop.decksByName.Count)).Key;
-                if (activePlayer.coins == 0)
-                    choice = "/";
-            }
-            else
-            {
-                Console.WriteLine($"vous avez {activePlayer.coins} pièces et pouvez acheter:");
-                shop.displayCards();
-                choice = Console.ReadLine();
-            }
 
-            // if player decides to not buy anything
-            if (choice != "/")
+
+            shop.displayCards();
+            string choice = purchaseChoice(activePlayer);
+            while (!activePlayer.BuyCard(shop.decksByName[choice]))
             {
-                //while it is not a valid answer, we ask which card the player wants
-                while (!activePlayer.BuyCard(shop.decksByName[choice]))
-                {
-                    if (activePlayer.name == "AI")
-                    {
-                        choice = shop.decksByName.ElementAt(r.Next(0, shop.decksByName.Count)).Key;
-                        if (activePlayer.coins == 0)
-                            choice = "/";
-                    }
-                    else
-                    {
-                        shop.displayCards();
-                        choice = Console.ReadLine();
-                    }
-                    // if player decides to not buy anything
-                    if (choice == "/") break;
-                }
+                choice = purchaseChoice(activePlayer);
             }
             
             // if it is AI's turn, we stop the display for reading
             if (activePlayer.name == "AI")
                 Thread.Sleep(7000);
+        }
+
+        private string purchaseChoice(Player activePlayer)
+        {
+            string choice;
+            if (activePlayer.name == "AI")
+            {
+                choice = shop.decksByName.ElementAt(r.Next(0, shop.decksByName.Count - 1)).Key;
+            }
+            else
+            {
+                choice = Console.ReadLine();
+                while (!shop.decksByName.Keys.Contains(choice) && choice != "/")
+                {
+                    Console.WriteLine("mauvaise saisie. Veuillez réessayer");
+                    choice = Console.ReadLine();
+                }
+            }
+            return choice;
         }
     }
 }
