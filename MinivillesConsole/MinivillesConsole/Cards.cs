@@ -1,81 +1,73 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-
-namespace MinivillesConsole
+﻿namespace MinivillesConsole
 {
     public class Cards
     {
 
         //attributs associés à chaque carte du jeu
-        public int cost;
-        public int gainValue; //ce que la carte permet de gagner en pièces
-        public string name;
-        public string type;
-        public string color;
-        public int anyRound;
-        public int diceValue1; //première valeur possible du dé pour déclencher l'effet de la carte
-        public int diceValue2; //première valeur possible du dé pour déclencher l'effet de la carte
-        public int cardsLeftStore = 6;
-        public string id;
+        public readonly int Cost;
+        public readonly int GainValue; //ce que la carte permet de gagner en pièces
+        public readonly string Name;
+        public readonly string Type;
+        public readonly string Color;
+        public int AnyRound;
+        public readonly int DiceValue1; //première valeur possible du dé pour déclencher l'effet de la carte
+        public readonly int DiceValue2; //première valeur possible du dé pour déclencher l'effet de la carte
+        public int CardsLeftStore;
+        public readonly string Id;
 
 
 
         
-        public Cards(string Id, string Name, int Cost, int GainValue, string Type, string Color, int DiceValue1, int DiceValue2, int CardsLeftStore)
+        public Cards(string Id, string Name, int Cost, int GainValue, string Type, string Color, int DiceValue1, int DiceValue2, int CardsLeftStore = 6)
         {
-            name = Name;
-            cost = Cost;
-            gainValue = GainValue;
-            type = Type;
-            color = Color;
-            diceValue1 = DiceValue1;
-            diceValue2 = DiceValue2;
-            cardsLeftStore = CardsLeftStore;
-            id = Id;
+            this.Name = Name;
+            this.Cost = Cost;
+            this.GainValue = GainValue;
+            this.Type = Type;
+            this.Color = Color;
+            this.DiceValue1 = DiceValue1;
+            this.DiceValue2 = DiceValue2;
+            this.CardsLeftStore = CardsLeftStore;
+            this.Id = Id;
 
         }
 
         //La fonction qui gère les effets des cartes hors monuments
-        public void Effect(Player playerSendingEffect, Player playerReceivingEffect) //playerSendingEffect correspond au joueur qui lance les dés et playerReceivingEffect tous les autres joueurs 
+        public void Effect(Player playerSendingEffect, Player otherPlayer) //playerSendingEffect correspond au joueur qui lance les dés et playerReceivingEffect tous les autres joueurs 
         {
-            //initalisation de l'effet des cartes en fonction de leur couleur : on ajoute des pièces au joueur actuel parfois au détriment d'autres joueurs
-            if (this.color == "blue")
+            //initialisation de l'effet des cartes en fonction de leur couleur : on ajoute des pièces au joueur actuel parfois au détriment d'autres joueurs
+            if (this.Color == "blue")
             {
 
-                playerSendingEffect.coins += this.gainValue;
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"\n {playerSendingEffect.name} reçoit {this.gainValue} pièces de {this.name}");
+                playerSendingEffect.Coins += this.GainValue;
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine($"\n {playerSendingEffect.Name} reçoit {this.GainValue} pièce(s) de {this.Name}.");
                 Console.ForegroundColor = ConsoleColor.White;
 
             }
-            if (this.color == "red")
+            if (this.Color == "red")
             {
-                playerSendingEffect.coins += this.gainValue;
-                playerReceivingEffect.coins -= this.gainValue;
+                playerSendingEffect.Coins += this.GainValue;
+                otherPlayer.Coins -= this.GainValue;
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"\n {playerSendingEffect.name} reçoit {this.gainValue} pièces de {playerReceivingEffect.name} par le biais de {this.name}");
+                Console.WriteLine($"\n {playerSendingEffect.Name} reçoit {this.GainValue} pièce(s) de {otherPlayer.Name} par le biais de {this.Name}.");
                 Console.ForegroundColor = ConsoleColor.White;
 
             }
-            if (this.color == "green")
+            if (this.Color == "green")
             {
-                if (this.type == "shop")
+                if (this.Type == "shop")
                 {
-                    playerSendingEffect.coins += this.gainValue;
+                    playerSendingEffect.Coins += this.GainValue;
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine($"\n {playerSendingEffect.name} reçoit {this.gainValue} pièces de {this.name}");
+                    Console.WriteLine($"\n {playerSendingEffect.Name} reçoit {this.GainValue} pièce(s) de {this.Name}.");
                     Console.ForegroundColor = ConsoleColor.White;
                 }
                 else //cas spécial des cartes vertes qui ajoutent un nombre de pièces spécifiques pour certains types de cartes
                 {
                     int gain = 0;
                     string researched = "";
-                    switch (this.name) //condition sur le nom des cartes vertes spéciales
+                    switch (this.Name) //condition sur le nom des cartes vertes spéciales
                     {
                         case "usine a fromage":
                             researched = "breeding";
@@ -87,16 +79,16 @@ namespace MinivillesConsole
                             researched = "harvest";
                             break;
                     }
-                    foreach (var card in playerSendingEffect.cardsOwned) //on parcours la main du joueur qui vient de lancer les dés
+                    foreach (var card in playerSendingEffect.CardsOwned) //on parcourt la main du joueur qui vient de lancer les dés
                     {
-                        if (card.type == researched) //si le joueur a des cartes au type affecté, on ajoute pour chacune d'entre elle le montant du gain de la carte verte spécial
+                        if (card.Type == researched) //si le joueur a des cartes au type affecté, on ajoute pour chacune d'entre elle le montant du gain de la carte verte spécial
                         {
-                            gain += this.gainValue; 
+                            gain += this.GainValue; 
                         }
                     }
-                    playerSendingEffect.coins += gain;
+                    playerSendingEffect.Coins += gain;
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine($"\n {playerSendingEffect.name} reçoit {gain} pièces de {this.name}");
+                    Console.WriteLine($"\n {playerSendingEffect.Name} reçoit {gain} pièce(s) de {this.Name}.");
                     Console.ForegroundColor = ConsoleColor.White;
                 }
 

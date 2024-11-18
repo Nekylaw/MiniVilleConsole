@@ -1,18 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MinivillesConsole
+﻿namespace MinivillesConsole
 {
     internal class Dice
     {
-        private Random random = new();
+        private readonly Random _random = new();
 
         public int Throw()
         {
-            return random.Next(1,7);
+            return _random.Next(1,7);
         }
     }
 }

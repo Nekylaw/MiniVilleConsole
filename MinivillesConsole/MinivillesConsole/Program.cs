@@ -1,14 +1,11 @@
-﻿using System;
-
-namespace MinivillesConsole
+﻿namespace MinivillesConsole
 {
     static class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Game game = new Game();
             game.Run();
-
         }
     }
 }
