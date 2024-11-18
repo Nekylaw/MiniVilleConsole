@@ -29,7 +29,7 @@ Le but du jeu est d'être le premier à atteindre 20 pièces. Pour cela, vous de
 
 - Lancez le jeu en exécutant l'application.
 - Deux joueurs (vous et un adversaire IA) participent à la partie.
-- Lors de chaque tour, vous pouvez choisir de lancer un ou deux dés. Vous devez ensuite acheter des cartes disponibles.
+- Lors de chaque tour, vous pouvez choisir de lancer un ou deux dés. Vous avez ensuite la possibilité d'acheter une carte en saisissant la commande correspondante.
 - Vous gagnez des pièces en utilisant les cartes que vous avez achetées. Continuez à accumuler des pièces jusqu'à ce qu'un joueur atteigne les **20 pièces** nécessaires pour gagner.
 
 ## Commandes
