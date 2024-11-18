@@ -28,6 +28,14 @@
             //game loop
             while (_players[0].Coins < 20 && _players[1].Coins < 20)
             {
+                Console.Clear();
+                Console.WriteLine("___  ____       _       _ _ _           ");
+                Console.WriteLine(@"|  \\/ (_)     (_)     (_) | |          ");
+                Console.WriteLine("| .  . |_ _ __  ___   ___| | | ___  ___ ");
+                Console.WriteLine(@"| |\/| | | '_ \| \ \ / / | | |/ _ \/ __|");
+                Console.WriteLine(@"| |  | | | | | | |\ V /| | | |  __/\__ \");
+                Console.WriteLine(@"\_|  |_/_|_| |_|_| \_/ |_|_|_|\___||___/");
+                Console.WriteLine();
                 PlayTurn(_players[_currentPlayerIndex]);
                 _currentPlayerIndex = (_currentPlayerIndex == 1) ? 0 : 1;
             }
