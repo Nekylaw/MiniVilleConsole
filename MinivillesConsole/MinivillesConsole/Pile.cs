@@ -34,17 +34,17 @@ namespace MinivillesConsole
         {
             List<Cards> allCards = new List<Cards>
             {
-                new Cards("WF","champs de ble", 1, 1, "harvest", "blue", 1, 0, 6),
+                new Cards("CB","champs de ble", 1, 1, "harvest", "blue", 1, 0, 6),
                 new Cards("FO","foret", 3, 1, "natural", "blue", 5, 0, 6),
                 new Cards("MI","mine", 6, 5, "natural", "blue", 9, 0, 6),
-                new Cards("FA","ferme", 2, 1, "breeding", "blue", 2, 0, 6),
+                new Cards("FE","ferme", 2, 1, "breeding", "blue", 2, 0, 6),
                 new Cards("VE","verger", 3, 3, "harvest", "blue", 10, 0, 6),
-                new Cards("BA","boulangerie", 1, 1, "shop", "green", 2, 3, 6),
-                new Cards("ST","superette", 2, 3, "shop", "green", 4, 0, 6),
-                new Cards("CH","usine a fromage", 5, 3, "factory", "green", 7, 0, 6),
-                new Cards("FF","usine a meubles", 3, 3, "factory", "green", 8, 0, 6),
+                new Cards("BO","boulangerie", 1, 1, "shop", "green", 2, 3, 6),
+                new Cards("SU","superette", 2, 3, "shop", "green", 4, 0, 6),
+                new Cards("UF","usine a fromage", 5, 3, "factory", "green", 7, 0, 6),
+                new Cards("UM","usine a meubles", 3, 3, "factory", "green", 8, 0, 6),
                 new Cards("MA","marche", 5, 2, "grocery", "green", 11, 12, 6),
-                new Cards("CO","cafe", 2, 1, "restaurant", "red", 3, 0, 6),
+                new Cards("CA","cafe", 2, 1, "restaurant", "red", 3, 0, 6),
                 new Cards("RE","restaurant", 3, 2, "restaurant", "red", 9, 10, 6)
                 /*new Cards("BC","business center", 8, 0, "establishment", "purple", 6, 0, 6), //EXCEPTION : echange d'etablissement avec un joueur
                 new Cards("TE","television", 7, 5, "establishment", "purple", 6, 0, 6),

@@ -24,8 +24,8 @@ namespace MinivillesConsole
             this.name = name;   //Nom du joueur
             coins = 3;          //La partie commence avec 3 îeces
             //Liste des cartes avec 2 cartes attrivuées en début de partie
-            cardsOwned = new List<Cards> { new Cards("WF", "champs de ble", 1, 1, "harvest", "blue", 1, 0, 6),
-                                           new Cards("BA", "boulangerie", 1, 2, "shop", "green", 2, 3, 6)        };
+            cardsOwned = new List<Cards> { new Cards("CB", "champs de ble", 1, 1, "harvest", "blue", 1, 0, 6),
+                                           new Cards("BO", "boulangerie", 1, 1, "shop", "green", 2, 3, 6)        };
         }
 
         public bool BuyCard(Cards card)
@@ -51,7 +51,7 @@ namespace MinivillesConsole
             }
         }
 
-        public void ActivateCards(Player opponent, int diceValue)
+        public void ActivateCards(Player opponent, int diceValue, bool hasItsTurn)
         {
             foreach (var card in cardsOwned)    //Parcours les cartes du joueur
             {
@@ -59,7 +59,7 @@ namespace MinivillesConsole
                 if (card.diceValue1 == diceValue || card.diceValue2 == diceValue)
                 {
                     //Si la carte est bleue ou verte son effet se déclenche
-                    if (card.color == "blue" || card.color == "green")
+                    if (card.color == "blue" || (card.color == "green" && hasItsTurn))
                         card.Effect(this, opponent);
                 }
             }

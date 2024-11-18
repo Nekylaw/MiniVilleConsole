@@ -41,14 +41,14 @@ namespace MinivillesConsole
         }
 
         //La fonction qui gère les effets des cartes hors monuments
-        public void Effect(Player playerSendingEffect, Player playerReceivingEffect) //playerSendingEffect correspond au joueur qui lance les dés et playerReceivingEffect tous les autres joueurs 
+        public void Effect(Player playerSendingEffect, Player otherPlayer) //playerSendingEffect correspond au joueur qui lance les dés et playerReceivingEffect tous les autres joueurs 
         {
             //initalisation de l'effet des cartes en fonction de leur couleur : on ajoute des pièces au joueur actuel parfois au détriment d'autres joueurs
             if (this.color == "blue")
             {
 
                 playerSendingEffect.coins += this.gainValue;
-                Console.ForegroundColor = ConsoleColor.Green;
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine($"\n {playerSendingEffect.name} reçoit {this.gainValue} pièces de {this.name}");
                 Console.ForegroundColor = ConsoleColor.White;
 
@@ -56,9 +56,9 @@ namespace MinivillesConsole
             if (this.color == "red")
             {
                 playerSendingEffect.coins += this.gainValue;
-                playerReceivingEffect.coins -= this.gainValue;
+                otherPlayer.coins -= this.gainValue;
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"\n {playerSendingEffect.name} reçoit {this.gainValue} pièces de {playerReceivingEffect.name} par le biais de {this.name}");
+                Console.WriteLine($"\n {playerSendingEffect.name} reçoit {this.gainValue} pièces de {otherPlayer.name} par le biais de {this.name}");
                 Console.ForegroundColor = ConsoleColor.White;
 
             }

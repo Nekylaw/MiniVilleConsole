@@ -54,7 +54,7 @@ namespace MinivillesConsole
             Player otherPlayer = (currentPlayerIndex == 1) ? players[0] : players[1];
             
             //display whose playing and which cards he's handling
-            Console.WriteLine($"C'est au tour de {activePlayer.name}. Il détient {activePlayer.coins} pièces  et ses cartes sont: ");
+            Console.WriteLine($"C'est au tour de {activePlayer.name}. Il détient {activePlayer.coins} pièces et ses cartes sont: ");
             Thread.Sleep(1000);
             activePlayer.DisplayCards();
             Thread.Sleep(1000);
@@ -86,8 +86,8 @@ namespace MinivillesConsole
             Thread.Sleep(500);
 
             //activate the card's effects based on the dices
-            otherPlayer.ActivateCards(activePlayer, diceRoll);
-            activePlayer.ActivateCards(otherPlayer, diceRoll);
+            otherPlayer.ActivateCards(activePlayer, diceRoll, false);
+            activePlayer.ActivateCards(otherPlayer, diceRoll, true);
 
             Console.WriteLine("il est temps d'acheter une carte");
             Thread.Sleep(100);
@@ -133,7 +133,7 @@ namespace MinivillesConsole
                 choice = Console.ReadLine();
                 while (!shop.decksByName.Keys.Contains(choice) && choice != "/")
                 {
-                    Console.WriteLine("mauvaise saisie. Veuillez réessayer");
+                    Console.WriteLine("Mauvaise saisie. Veuillez réessayer");
                     choice = Console.ReadLine();
                 }
             }
