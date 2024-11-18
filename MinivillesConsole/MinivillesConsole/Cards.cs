@@ -67,15 +67,15 @@
                 {
                     int gain = 0;
                     string researched = "";
-                    switch (this.Name) //condition sur le nom des cartes vertes spéciales
+                    switch (this.Id) //condition sur le nom des cartes vertes spéciales
                     {
-                        case "usine a fromage":
+                        case "FR":
                             researched = "breeding";
                             break;
-                        case "usine a meubles":
+                        case "FM":
                             researched = "natural";
                             break;
-                        case "marche":
+                        case "MA":
                             researched = "harvest";
                             break;
                     }
@@ -93,13 +93,6 @@
                 }
 
             }
-            
-
         }
-
-
-
-
-
     }
 }

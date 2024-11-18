@@ -9,8 +9,8 @@
   <component name="ChangeListManager">
     <list default="true" id="0eee5b10-69f6-49ec-92f8-952eddb6b214" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MinivillesConsole/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MinivillesConsole/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MinivillesConsole/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MinivillesConsole/Game.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MinivillesConsole/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MinivillesConsole/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MinivillesConsole/Cards.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MinivillesConsole/Cards.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MinivillesConsole/Pile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MinivillesConsole/Pile.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +57,7 @@
     &quot;.NET Project.MinivillesConsole.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Antoine&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -109,7 +109,10 @@
       <workItem from="1731908760203" duration="766000" />
       <workItem from="1731909669128" duration="1457000" />
       <workItem from="1731911478180" duration="2040000" />
-      <workItem from="1731914042029" duration="645000" />
+      <workItem from="1731914042029" duration="864000" />
+      <workItem from="1731917362866" duration="808000" />
+      <workItem from="1731918277369" duration="646000" />
+      <workItem from="1731919431508" duration="875000" />
     </task>
     <servers />
   </component>

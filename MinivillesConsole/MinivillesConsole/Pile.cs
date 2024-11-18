@@ -9,9 +9,7 @@
             DecksByName = new Dictionary<string, Cards>();
             InitializeDeck();
         }
-
-
-
+        
         public void DisplayCards()
         {
             Console.ForegroundColor = ConsoleColor.Magenta;
