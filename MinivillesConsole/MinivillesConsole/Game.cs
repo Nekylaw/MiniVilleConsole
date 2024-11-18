@@ -92,25 +92,42 @@ namespace MinivillesConsole
             Console.WriteLine("il est temps d'acheter une carte");
             Thread.Sleep(100);
 
-
+            //display shop and ask the player to buy
             shop.displayCards();
             string choice = purchaseChoice(activePlayer);
-            while (!activePlayer.BuyCard(shop.decksByName[choice]))
+            if (choice != "/")
             {
-                choice = purchaseChoice(activePlayer);
+                while (!activePlayer.BuyCard(shop.decksByName[choice]))
+                {
+                    choice = purchaseChoice(activePlayer);
+                    if (choice == "/")
+                    {
+                        Console.Write("FFFFFFFFFFFFFF");
+                        break;
+                    }
+                }
             }
-            
-            // if it is AI's turn, we stop the display for reading
-            if (activePlayer.name == "AI")
-                Thread.Sleep(7000);
+
+            // wait for the player to read
+            Console.WriteLine("Appuyez sur Entrée pour continuer.");
+            Console.ReadLine();
         }
 
+        /// <summary>
+        /// return a valid choice of card to buy
+        /// </summary>
+        /// <param name="activePlayer">the player deciding which card to buy</param>
+        /// <returns></returns>
         private string purchaseChoice(Player activePlayer)
         {
             string choice;
             if (activePlayer.name == "AI")
             {
                 choice = shop.decksByName.ElementAt(r.Next(0, shop.decksByName.Count - 1)).Key;
+                if (activePlayer.coins == 0)
+                {
+                    choice = "/";
+                }
             }
             else
             {
