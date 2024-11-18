@@ -52,7 +52,8 @@ namespace MinivillesConsole
         {
             Player activePlayer = ActivePlayer;
             Player otherPlayer = (currentPlayerIndex == 1) ? players[0] : players[1];
-
+            
+            //display whose playing and which cards he's handling
             Console.WriteLine($"C'est au tour de {activePlayer.name}. Il détient {activePlayer.coins} pièces  et ses cartes sont: ");
             Thread.Sleep(1000);
             activePlayer.DisplayCards();
@@ -60,30 +61,34 @@ namespace MinivillesConsole
             
             int diceRoll = 0;
             int n = 1;
+            //AI decides if she wants to roll 1 or 2 dices
             if (activePlayer.name == "AI")
             {
                 n = r.Next(1,3);
             }
+            //player decides if he wants to roll 2 dices
             else
             {
                 Console.Write("Voulez-vous lancer 1 ou 2 dés? (1/2)");
                 n = int.Parse(Console.ReadLine());
             }
+
+            //dices being rolled
             for (int i = 1; i <= n; i++)
             {
                 diceRoll += dice.Throw();
             }
-
             Console.WriteLine($"{activePlayer.name} a obtenu {diceRoll}");
             Thread.Sleep(500);
 
+            //activate the card's effects based on the dices
             otherPlayer.ActivateCards(activePlayer, diceRoll);
-
             activePlayer.ActivateCards(otherPlayer, diceRoll);
 
             Console.WriteLine("il est temps d'acheter une carte");
             Thread.Sleep(100);
             string choice;
+            // purchase cards
             if (activePlayer.name == "AI")
             {
                 //prends une clé aléatoire
@@ -97,8 +102,11 @@ namespace MinivillesConsole
                 shop.displayCards();
                 choice = Console.ReadLine();
             }
+
+            // if player decides to not buy anything
             if (choice != "/")
             {
+                //while it is not a valid answer, we ask which card the player wants
                 while (!activePlayer.BuyCard(shop.decksByName[choice]))
                 {
                     if (activePlayer.name == "AI")
@@ -112,10 +120,12 @@ namespace MinivillesConsole
                         shop.displayCards();
                         choice = Console.ReadLine();
                     }
-                    if (choice == "/") continue; // ça marche pas
+                    // if player decides to not buy anything
+                    if (choice == "/") break;
                 }
             }
             
+            // if it is AI's turn, we stop the display for reading
             if (activePlayer.name == "AI")
                 Thread.Sleep(7000);
         }
