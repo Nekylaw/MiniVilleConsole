@@ -24,8 +24,8 @@ namespace MinivillesConsole
             this.name = name;   //Nom du joueur
             coins = 3;          //La partie commence avec 3 îeces
             //Liste des cartes avec 2 cartes attrivuées en début de partie
-            cardsOwned = new List<Cards> { new Cards("WF", "wheat field", 1, 1, "harvest", "blue", 1, 0, 6),
-                                           new Cards("BA", "bakery", 1, 2, "shop", "green", 2, 3, 6)        };
+            cardsOwned = new List<Cards> { new Cards("WF", "champs de ble", 1, 1, "harvest", "blue", 1, 0, 6),
+                                           new Cards("BA", "boulangerie", 1, 2, "shop", "green", 2, 3, 6)        };
         }
 
         public bool BuyCard(Cards card)
