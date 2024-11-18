@@ -10,6 +10,7 @@
     <list default="true" id="0eee5b10-69f6-49ec-92f8-952eddb6b214" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MinivillesConsole/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MinivillesConsole/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MinivillesConsole/Cards.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MinivillesConsole/Cards.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MinivillesConsole/Dice.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MinivillesConsole/Dice.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MinivillesConsole/Game.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MinivillesConsole/Game.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MinivillesConsole/Pile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MinivillesConsole/Pile.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MinivillesConsole/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MinivillesConsole/Player.cs" afterDir="false" />
@@ -108,6 +109,9 @@
       <workItem from="1731863427269" duration="360000" />
       <workItem from="1731878026557" duration="1866000" />
       <workItem from="1731905794048" duration="1383000" />
+      <workItem from="1731908760203" duration="766000" />
+      <workItem from="1731909669128" duration="1457000" />
+      <workItem from="1731911478180" duration="1619000" />
     </task>
     <servers />
   </component>

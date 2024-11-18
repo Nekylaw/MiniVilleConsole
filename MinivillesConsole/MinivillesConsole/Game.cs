@@ -1,19 +1,12 @@
-﻿ using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MinivillesConsole
+﻿namespace MinivillesConsole
 {
     internal class Game
     {
-        private List<Player> players = new();
-        private int currentPlayerIndex = 0;
-        private Dice dice = new Dice();
-        private Random r = new Random();
-        Pile shop = new Pile();
+        private readonly List<Player> _players = new();
+        private int _currentPlayerIndex;
+        private readonly Dice _dice = new Dice();
+        private readonly Random _r = new Random();
+        private readonly Pile _shop = new Pile();
 
         /// <summary>
         /// start a game
@@ -21,25 +14,25 @@ namespace MinivillesConsole
         public void Run()
         {
             //initialize all players
-            players.Add(new Player("Player"));
-            players.Add(new Player("AI"));
+            _players.Add(new Player("Player"));
+            _players.Add(new Player("AI"));
 
-            Console.WriteLine("Début de la partie de Miniville !");
+            Console.WriteLine("Début de la partie de Minivilles !");
             Thread.Sleep(1000);
 
             //game loop
-            while (players[0].coins < 20 && players[1].coins < 20)
+            while (_players[0].Coins < 20 && _players[1].Coins < 20)
             {
                 Console.Clear();
-                PlayTurn(players[currentPlayerIndex]);
-                currentPlayerIndex = (currentPlayerIndex == 1) ? 0 : 1;
+                PlayTurn(_players[_currentPlayerIndex]);
+                _currentPlayerIndex = (_currentPlayerIndex == 1) ? 0 : 1;
             }
             //display the end of the game
-            foreach (var player in players)
+            foreach (var player in _players)
             {
-                if(player.coins >= 20)
+                if(player.Coins >= 20)
                 {
-                    Console.WriteLine($"Joueur {player.name} a gagné en atteignant 20 pièces!");
+                    Console.WriteLine($"Joueur {player.Name} a gagné en atteignant 20 pièces!");
                 }
             }
         }
@@ -51,55 +44,54 @@ namespace MinivillesConsole
         private void PlayTurn(Player ActivePlayer)
         {
             Player activePlayer = ActivePlayer;
-            Player otherPlayer = (currentPlayerIndex == 1) ? players[0] : players[1];
+            Player otherPlayer = (_currentPlayerIndex == 1) ? _players[0] : _players[1];
             
             //display whose playing and which cards he's handling
-            Console.WriteLine($"C'est au tour de {activePlayer.name}. Il détient {activePlayer.coins} pièces et ses cartes sont: ");
+            Console.WriteLine($"C'est au tour de {activePlayer.Name}. Il détient {activePlayer.Coins} pièce(s) et ses cartes sont: ");
             Thread.Sleep(1000);
             activePlayer.DisplayCards();
             Thread.Sleep(1000);
             
             int diceRoll = 0;
-            int n = 1;
+            int n;
             //AI decides if she wants to roll 1 or 2 dices
-            if (activePlayer.name == "AI")
+            if (activePlayer.Name == "AI")
             {
-                n = r.Next(1,3);
+                n = _r.Next(1,3);
             }
             //player decides if he wants to roll 2 dices
             else
             {
                 Console.Write("Voulez-vous lancer 1 ou 2 dés? (1/2)");
-                while(!int.TryParse(Console.ReadLine(), out n) || n<1 ||n>2)
+                while(!int.TryParse(Console.ReadLine(), out n))
                 {
-                    Console.WriteLine("saisie invalide. Veuillez réessayer.");
+                    Console.WriteLine("Saisie invalide. Veuillez réessayer.");
                 }
-
             }
 
             //dices being rolled
             for (int i = 1; i <= n; i++)
             {
-                diceRoll += dice.Throw();
+                diceRoll += _dice.Throw();
             }
-            Console.WriteLine($"{activePlayer.name} a obtenu {diceRoll}");
+            Console.WriteLine($"{activePlayer.Name} a obtenu un {diceRoll}");
             Thread.Sleep(500);
 
             //activate the card's effects based on the dices
             otherPlayer.ActivateCards(activePlayer, diceRoll, false);
             activePlayer.ActivateCards(otherPlayer, diceRoll, true);
 
-            Console.WriteLine("il est temps d'acheter une carte");
+            Console.WriteLine("Il est temps d'acheter une carte!");
             Thread.Sleep(100);
 
             //display shop and ask the player to buy
-            shop.displayCards();
-            string choice = purchaseChoice(activePlayer);
+            _shop.DisplayCards();
+            string choice = PurchaseChoice(activePlayer);
             if (choice != "/")
             {
-                while (!activePlayer.BuyCard(shop.decksByName[choice]))
+                while (!activePlayer.BuyCard(_shop.DecksByName[choice]))
                 {
-                    choice = purchaseChoice(activePlayer);
+                    choice = PurchaseChoice(activePlayer);
                     if (choice == "/")
                     {
                         break;
@@ -117,13 +109,13 @@ namespace MinivillesConsole
         /// </summary>
         /// <param name="activePlayer">the player deciding which card to buy</param>
         /// <returns></returns>
-        private string purchaseChoice(Player activePlayer)
+        private string PurchaseChoice(Player activePlayer)
         {
             string choice;
-            if (activePlayer.name == "AI")
+            if (activePlayer.Name == "AI")
             {
-                choice = shop.decksByName.ElementAt(r.Next(0, shop.decksByName.Count - 1)).Key;
-                if (activePlayer.coins == 0)
+                choice = _shop.DecksByName.ElementAt(_r.Next(0, _shop.DecksByName.Count - 1)).Key;
+                if (activePlayer.Coins == 0)
                 {
                     choice = "/";
                 }
@@ -131,7 +123,7 @@ namespace MinivillesConsole
             else
             {
                 choice = Console.ReadLine();
-                while (!shop.decksByName.Keys.Contains(choice) && choice != "/")
+                while (!_shop.DecksByName.Keys.Contains(choice) && choice != "/")
                 {
                     Console.WriteLine("Mauvaise saisie. Veuillez réessayer");
                     choice = Console.ReadLine();
